@@ -3,19 +3,16 @@
 # lỗi là nhầm lẫn giữa continue khi nhập sai luồng vẫn ko bị ngắt mà thực hiện dẫn đến việc có email nhạna thông báo thưởng 0đ
 
 #  sửa
-for i in range(3):
-    ten = input(f"\nNhập tên nhân viên thứ {i + 1}: ")
+print("--- hệ thống email thưởng tết ---")
+for employee_number in range(1, 4):
+    print("--- đang xử lý nhân viên số", employee_number, "---")
+    working_days = int(input("nhập số ngày công trong tháng: "))
     
-    try:
-        so_ngay_cong = int(input("Nhập số ngày công: "))
-    except ValueError:
-        print("Số ngày công không hợp lệ!")
-        continue
+    if working_days == 0:
+        print("cảnh báo: nhân viên nghỉ cả tháng không xét duyệt thưởng.")
+    else:
+        bonus_amount = working_days * 200000
+        print(f"→ đã gửi email: Chúc mừng nhận được {bonus_amount:,} vnđ tiền thưởng!")
+    print("--------------------------------------------------\n")
 
-    if so_ngay_cong <= 0:
-        print(f"Cảnh báo: Nhân viên {ten} nghỉ không lương cả tháng (0 ngày công)!")
-        continue
-
-    tien_thuong = so_ngay_cong * 200000
-    print(f"Tính thưởng thành công cho {ten}: {tien_thuong:,.0f} VNĐ")
-    print(f"Hệ thống: Đã gửi email chúc mừng nhận thưởng đến {ten}.")
+print("đã hoàn tất quá trình duyệt thưởng cho 3 nhân viên!")
